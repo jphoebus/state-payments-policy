@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is It a Loan? How States Regulate Earned Wage Access and Interchange on Tax and Tips</title>
+<meta name="description" content="How states classify earned wage access, what eleven state laws require, how a federal bill would change state authority, and how Illinois and Colorado handled interchange fees on sales tax and tips. Current as of October 12, 2026.">
+<meta property="og:title" content="Is It a Loan? How States Regulate Earned Wage Access and Interchange on Tax and Tips">
+<meta property="og:description" content="Eleven states have written earned wage access laws, and the first decision in each is whether it counts as a loan. Plus the Illinois and Colorado interchange timeline.">
+<meta property="og:image" content="https://jphoebus.github.io/state-payments-policy/payments-preview.png">
+<meta property="og:url" content="https://jphoebus.github.io/state-payments-policy/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --limestone: #EDF0F1;
+    --paper: #FFFFFF;
+    --ink: #1B2631;
+    --slate: #52606D;
+    --rule: #CBD2D9;
+    --accent: #1F5C4A;
+    --accent-soft: #DCEBE5;
+    --font: "Public Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--limestone);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .measure { max-width: 68ch; }
+
+  /* Header */
+  header { padding: 64px 0 40px; }
+  h1 {
+    font-size: clamp(2rem, 4.6vw, 3.4rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+    max-width: 18ch;
+  }
+  .lede { font-size: 1.15rem; color: var(--slate); margin: 0; }
+
+  /* Where each state stands */
+  .standing {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-top: 3px solid var(--ink);
+    margin-top: 40px;
+  }
+  .standing div {
+    padding: 16px 16px 20px 0;
+    border-right: 1px solid var(--rule);
+    padding-left: 16px;
+  }
+  .standing div:first-child { padding-left: 0; }
+  .standing div:last-child { border-right: 0; }
+  .standing strong { display: block; font-size: 1.25rem; font-weight: 700; }
+  .standing span { display: block; color: var(--slate); font-size: 0.95rem; }
+  .standing time { display: block; font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-top: 6px; }
+
+  /* Comparison */
+  section { padding: 48px 0; }
+  h2 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.01em; margin: 0 0 12px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 20px; align-items: center; }
+  .filters p { margin: 0 8px 0 0; color: var(--slate); font-size: 0.95rem; }
+  .chip {
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border: 1.5px solid var(--accent);
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+  }
+  .chip[aria-pressed="false"] { background: transparent; color: var(--accent); }
+  .table-scroll {
+    overflow-x: auto;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  table { border-collapse: collapse; width: 100%; min-width: 1100px; font-size: 0.92rem; }
+  th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--rule); }
+  thead th {
+    font-size: 1rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--ink);
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+  }
+  tbody th {
+    font-weight: 600;
+    color: var(--slate);
+    width: 170px;
+    position: sticky;
+    left: 0;
+    background: var(--paper);
+  }
+  tr.group th {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  [hidden] { display: none !important; }
+  td.empty { color: var(--slate); font-style: italic; }
+  td.sources a { display: block; word-break: break-word; margin-bottom: 4px; }
+  .status-msg { padding: 24px; color: var(--slate); }
+
+  /* Analysis */
+  .analysis { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .analysis h3 { font-size: 1.1rem; font-weight: 700; margin: 24px 0 4px; }
+  .analysis p { margin: 0; }
+  .question {
+    margin-top: 32px;
+    padding-left: 20px;
+    border-left: 4px solid var(--accent);
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  ul.watch { padding-left: 1.1em; margin: 12px 0 0; }
+  ul.watch li { margin-bottom: 10px; }
+
+
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px 32px; margin-top: 8px; }
+  .cards h3 { font-size: 1.1rem; font-weight: 700; margin: 16px 0 4px; }
+  .cards p { margin: 0 0 6px; }
+  .cards p.src { font-size: 0.85rem; }
+  .tag { display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 999px; vertical-align: 2px; margin-left: 6px; }
+  .tag-enacted { background: var(--accent); color: #fff; }
+  .tag-pending { background: var(--accent-soft); color: var(--accent); }
+  .tag-no-law { background: transparent; color: var(--slate); border: 1px solid var(--rule); }
+  .band { background: var(--paper); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .finding { font-size: 1.15rem; font-weight: 500; border-left: 4px solid var(--accent); padding-left: 20px; margin: 28px 0 0; }
+  .finding + .finding { margin-top: 14px; }
+  ol.timeline { list-style: none; padding: 0; margin: 16px 0 0; border-left: 2px solid var(--rule); }
+  ol.timeline li { position: relative; padding: 0 0 18px 24px; }
+  ol.timeline li::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+  ol.timeline time { display: block; font-weight: 700; color: var(--accent); font-size: 0.95rem; }
+  ol.timeline p { margin: 2px 0 0; }
+  table.small { min-width: 760px; }
+  #table tbody th { width: 110px; }
+  #table td.sources a { font-size: 0.85rem; }
+  .twocol { display: grid; grid-template-columns: 3fr 2fr; gap: 48px; }
+  .twocol h3 { font-size: 1.1rem; font-weight: 700; margin: 24px 0 4px; }
+  .twocol p { margin: 0 0 8px; }
+  blockquote { margin: 8px 0 12px; padding-left: 16px; border-left: 3px solid var(--rule); color: var(--slate); }
+  .note { color: var(--slate); font-size: 0.92rem; }
+  footer { border-top: 1px solid var(--rule); padding: 40px 0 64px; color: var(--slate); font-size: 0.95rem; }
+  footer p { margin: 0 0 12px; }
+
+  @media (max-width: 800px) {
+    .standing { grid-template-columns: 1fr 1fr; }
+    .standing div { border-right: 0; border-bottom: 1px solid var(--rule); padding-left: 0; }
+    .analysis, .twocol { grid-template-columns: 1fr; gap: 16px; }
+    .cards { grid-template-columns: 1fr; }
+    header { padding-top: 40px; }
+  }
+  @media print {
+    .filters { display: none; }
+    body { background: #fff; }
+    .table-scroll { overflow: visible; border: 0; }
+    thead th, tbody th { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Is it a loan? How states set payments rules</h1>
+    <p class="lede measure">How states classify earned wage access, what their laws require, how a federal bill would change what states can decide, and how Illinois and Colorado handled card interchange fees on sales tax and tips. Current as of October 12, 2026.</p>
+    <p class="finding measure"><strong>Earned wage access:</strong> eleven states have written laws, and the first decision in each, whether the product is a loan, shapes the rest. Nine treat it as something other than a loan and rely mainly on disclosure; most also require a free option. Maryland and Connecticut treat it as credit and cap fees. A federal bill now on the House calendar would bar states from treating compliant products as credit.</p>
+    <p class="finding measure"><strong>Interchange on tax and tips:</strong> federal preemption is setting the outer limit of what states can do. Illinois’ law has been enjoined for national banks, federal credit unions, federal savings associations, out-of-state state banks, and card networks, and its start date has moved twice. Colorado’s governor cited that litigation when he vetoed a similar bill.</p>
+
+    <div class="standing" aria-label="Key figures">
+      <div><strong>11 states</strong><span>Have enacted earned wage access laws, 2023–2025</span></div>
+      <div><strong>9 of 11</strong><span>Treat compliant earned wage access as something other than a loan</span></div>
+      <div><strong>2 of 11</strong><span>Treat it as credit: Maryland and Connecticut</span></div>
+      <div><strong>H.R. 9330</strong><span>Would bar states from treating it as credit</span><time datetime="2026-09-01">On the House calendar since Sept. 1</time></div>
+      <div><strong>Illinois</strong><span>Interchange law on tax and tips, delayed twice</span><time datetime="2027-07-01">Effective July 1, 2027</time></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="ewa">
+    <div class="wrap">
+      <h2>Earned wage access: the eleven state laws</h2>
+      <p class="measure">Earned wage access lets workers draw pay they have already earned before payday, either through an employer’s payroll provider or directly through an app. Every law below starts by deciding whether that is a loan. Choose which classification to show. On a phone, scroll the table sideways.</p>
+      <div class="filters" id="filters" role="group" aria-label="Classification to show"><p>Showing:</p><button class="chip" type="button" aria-pressed="true" data-class="notloan">Not a loan (9)</button><button class="chip" type="button" aria-pressed="true" data-class="credit">Treated as credit (2)</button></div>
+      <div class="table-scroll" tabindex="0" aria-label="Earned wage access laws by state">
+        <table id="table">
+<thead><tr><th scope="col">State</th><th scope="col">Law</th><th scope="col">Effective</th><th scope="col">Is it a loan?</th><th scope="col">License or registration</th><th scope="col">Fee limits</th><th scope="col">Tips</th><th scope="col">Free option</th><th scope="col">Sources</th></tr></thead><tbody>
+<tr data-class="notloan"><th scope="row">Nevada</th><td>SB 290 (2023); NRS ch. 604D</td><td>July 1, 2024; scheduled to expire Dec. 31, 2029</td><td>Not a loan, credit, or money transmission</td><td>License; Financial Institutions Division</td><td>No cap on consumer fees; no late fees or interest</td><td>Allowed; must disclose and offer a zero option</td><td>Required (stated in license application)</td><td class="sources"><a href="https://www.leg.state.nv.us/NRS/NRS-604D.html" rel="noopener">leg.state.nv.us</a><a href="https://fid.nv.gov/uploadedFiles/fidnvgov/content/Licensing/Earned_Wage/SB290_EN%20-%20Earned%20Wage%20Access.pdf" rel="noopener">fid.nv.gov</a></td></tr>
+<tr data-class="notloan"><th scope="row">Missouri</th><td>SB 103 (2023); RSMo 361.749; amended by HB 2423 (2026)</td><td>Aug. 28, 2023; licensing from Aug. 28, 2026</td><td>Not a loan, credit, or money transmission</td><td>Registration, now a license (2026); Division of Finance</td><td>No cap on consumer fees</td><td>Allowed; must disclose that tips are voluntary and may be zero</td><td>No express requirement found</td><td class="sources"><a href="https://revisor.mo.gov/main/OneSection.aspx?section=361.749" rel="noopener">revisor.mo.gov</a></td></tr>
+<tr data-class="notloan"><th scope="row">Wisconsin</th><td>2023 Act 131 (AB 574); Wis. Stat. ch. 203</td><td>Sept. 1, 2024</td><td>Exempt from consumer-loan and payday-loan licensing</td><td>License; Department of Financial Institutions</td><td>No cap on consumer fees; no late fees or interest</td><td>Allowed; disclosed; service cannot depend on a tip</td><td>Required</td><td class="sources"><a href="https://docs.legis.wisconsin.gov/2023/related/acts/131" rel="noopener">docs.legis.wisconsin.gov</a><a href="https://docs.legis.wisconsin.gov/document/statutes/203" rel="noopener">docs.legis.wisconsin.gov</a></td></tr>
+<tr data-class="notloan"><th scope="row">Kansas</th><td>HB 2560 (2024); K.S.A. 9-2401 to 9-2416</td><td>July 1, 2024</td><td>Not a loan, credit, or money transmission; outside the consumer credit code</td><td>Registration; Office of the State Bank Commissioner</td><td>No numeric cap; expedited fees may not be “unreasonable”</td><td>Allowed; disclosed; not shared with employers</td><td>Required</td><td class="sources"><a href="https://kslegislature.gov/b2023_24/bills/hb2560/" rel="noopener">kslegislature.gov</a><a href="https://www.osbckansas.gov/legal/ewa_2025.pdf" rel="noopener">osbckansas.gov</a></td></tr>
+<tr data-class="notloan"><th scope="row">South Carolina</th><td>S. 700, Act 190 (2024); S.C. Code 39-5-810 et seq.</td><td>Nov. 21, 2024</td><td>Not a consumer loan or money transmission</td><td>Registration; Department of Consumer Affairs</td><td>No cap; fees must be disclosed</td><td>Allowed; disclosed; not shared with employers</td><td>Required</td><td class="sources"><a href="https://scstatehouse.gov/sess125_2023-2024/bills/700.htm" rel="noopener">scstatehouse.gov</a><a href="https://consumer.sc.gov/node/721" rel="noopener">consumer.sc.gov</a></td></tr>
+<tr data-class="notloan"><th scope="row">Utah</th><td>HB 279 (2025); Utah Code 13-78; amended by SB 38 (2026)</td><td>May 7, 2025; registration required from Oct. 6, 2025</td><td>Not a loan, credit, or money transmission</td><td>Registration; Division of Consumer Protection</td><td>No cap on consumer fees</td><td>Allowed; disclosed; funds cannot depend on a tip</td><td>Required</td><td class="sources"><a href="https://le.utah.gov/Session/2025/bills/enrolled/HB0279.pdf" rel="noopener">le.utah.gov</a><a href="https://commerce.utah.gov/?p=29577" rel="noopener">commerce.utah.gov</a></td></tr>
+<tr data-class="notloan"><th scope="row">Arkansas</th><td>HB 1517, Act 347 (2025); Ark. Code 23-52-201 et seq.</td><td>Aug. 5, 2025 (general effective date for 2025 acts), as reported</td><td>Not lending, money transmission, or debt collection if listed conditions are met</td><td>None</td><td>No cap on consumer fees</td><td>Allowed; disclosed; not shared with employers</td><td>Required as a condition of the exclusion</td><td class="sources"><a href="https://arkleg.state.ar.us/Bills/Detail?id=HB1517&amp;ddBienniumSession=2025%2F2025R" rel="noopener">arkleg.state.ar.us</a></td></tr>
+<tr data-class="notloan"><th scope="row">Indiana</th><td>HEA 1125 (2025); IC 28-8-6</td><td>Jan. 1, 2026</td><td>Not a loan, credit, debt, or money transmission</td><td>License; Department of Financial Institutions</td><td>Delivery fees capped by cross-reference to the state’s check-cashing limit: the greater of $5 or 5 percent, as reported</td><td>Allowed; default tip must be $0</td><td>Required; free delivery within one business day</td><td class="sources"><a href="https://www.in.gov/dfi/files/EWA_Licensing_Guidance.pdf" rel="noopener">in.gov</a><a href="https://legiscan.com/IN/text/HB1125/id/3219955/Indiana-2025-HB1125-Enrolled.pdf" rel="noopener">legiscan.com</a></td></tr>
+<tr data-class="credit"><th scope="row">Maryland</th><td>HB 1294, ch. 847 (2025); amended by SB 94, ch. 170 (2026)</td><td>Oct. 1, 2025; tip ban from Oct. 1, 2026</td><td>Credit: “loan” includes earned wage access</td><td>Consumer loan license; Office of Financial Regulation</td><td>$5.00 per advance of $75 or less; $7.50 above $75</td><td>Prohibited from Oct. 1, 2026 (before then, default tip of zero)</td><td>Required</td><td class="sources"><a href="https://mgaleg.maryland.gov/2025RS/Chapters_noln/CH_847_hb1294t.pdf" rel="noopener">mgaleg.maryland.gov</a><a href="https://mgaleg.maryland.gov/2026RS/Chapters_noln/CH_170_sb0094t.pdf" rel="noopener">mgaleg.maryland.gov</a></td></tr>
+<tr data-class="notloan"><th scope="row">Louisiana</th><td>HB 368, Act 496 (2025); La. R.S. 9:3591.1 et seq.</td><td>Aug. 1, 2025</td><td>Not lending, money transmission, or debt collection if requirements are met</td><td>None; annual report to the Office of Financial Institutions (first due March 1, 2027)</td><td>No cap on consumer fees</td><td>Allowed; disclosed; service cannot depend on a tip</td><td>Required</td><td class="sources"><a href="https://legis.la.gov/legis/BillInfo.aspx?s=25RS&amp;b=HB368&amp;sbi=y" rel="noopener">legis.la.gov</a><a href="https://legis.la.gov/Legis/Law.aspx?d=1429302" rel="noopener">legis.la.gov</a></td></tr>
+<tr data-class="credit"><th scope="row">Connecticut</th><td>SB 1396, Public Act 25-155 (2025)</td><td>Oct. 1, 2025</td><td>Credit: advances are “small loans”</td><td>Small loan license; Department of Banking</td><td>Total finance charge capped at $4 per advance and $30 per month; advances under $750</td><td>Treated as a “voluntary finance charge”; default must be $0</td><td>Required, on every advance</td><td class="sources"><a href="https://prdext3.cga.ct.gov/2025/sum/pdf/2025SUM00155-R02SB-01396-SUM.pdf" rel="noopener">prdext3.cga.ct.gov</a><a href="https://legiscan.com/CT/text/SB01396/id/3256383/Connecticut-2025-SB01396-Chaptered.pdf" rel="noopener">legiscan.com</a></td></tr>
+</tbody>
+        </table>
+      </div>
+      <p class="note measure">Most of these laws define employer-integrated and direct-to-consumer products separately, but none sets different fee or tip rules by model. Approaches that rest on regulation or an attorney general opinion rather than a statute, such as Montana’s, are not counted.</p>
+    </div>
+  </section>
+
+  <section id="core" class="band">
+    <div class="wrap">
+      <h2>Pennsylvania and the other core states</h2>
+      <p class="measure">The five states covered across this portfolio. Only Maryland has acted, and it chose the credit approach.</p>
+      <div class="cards">
+<div><h3>Pennsylvania <span class="tag tag-no-law">No law</span></h3><p>No 2025–26 earned wage access bill found; a full search of the legislature’s site was not possible, so this is not confirmed. No Department of Banking and Securities guidance found.</p></div>
+<div><h3>Virginia <span class="tag tag-no-law">No law</span></h3><p>Two 2023 bills, HB 1921 and SB 1217, would have licensed providers through the State Corporation Commission; both failed in conference. No 2025–26 bill found.</p><p class="src"><a href="https://committees.lis.virginia.gov/pdfs/23105303D.pdf" rel="noopener">committees.lis.virginia.gov</a></p></div>
+<div><h3>Ohio <span class="tag tag-pending">Pending</span></h3><p>SB 117 (Sen. Lang) and HB 152 (Reps. Williams and Upchurch) would declare earned wage access not “a loan or other form of credit” and require registration with the Division of Financial Institutions. Both remain in committee; the last hearings were Sept. 30 and Nov. 5, 2025.</p><p class="src"><a href="https://ohiohouse.gov/legislation/136/sb117/status" rel="noopener">ohiohouse.gov</a> · <a href="https://ohiohouse.gov/legislation/136/hb152/status" rel="noopener">ohiohouse.gov</a></p></div>
+<div><h3>Maryland <span class="tag tag-enacted">Enacted</span></h3><p>Treats earned wage access as a loan, requires a consumer loan license, caps delivery fees at $5.00 or $7.50, and bans tips from Oct. 1, 2026. Maryland’s attorney general joined a June 30, 2026 letter from 15 attorneys general opposing H.R. 9330.</p><p class="src"><a href="https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb1294?ys=2025RS" rel="noopener">mgaleg.maryland.gov</a> · <a href="https://cca.hawaii.gov/wp-content/uploads/2026/07/2026.06.30-EWA-Legislation-State-AG-Letter-002.pdf" rel="noopener">cca.hawaii.gov</a></p></div>
+<div><h3>Georgia <span class="tag tag-no-law">No law</span></h3><p>SB 282 would have declared compliant earned wage access not a loan and capped fees at the greater of $5 or 5 percent per transaction. It was withdrawn and recommitted on Feb. 12, 2026, as reported, and did not pass.</p><p class="src"><a href="https://legiscan.com/GA/bill/SB282/2025" rel="noopener">legiscan.com</a></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="federal">
+    <div class="wrap">
+      <h2>The federal layer</h2>
+      <div class="twocol">
+        <div>
+          <h3>CFPB advisory opinion, Dec. 23, 2025</h3>
+          <p>The Consumer Financial Protection Bureau concluded that “Covered EWA is not credit” under the Truth in Lending Act and Regulation Z. Coverage turns on how the product works, not on whether an employer is involved: the amount is limited to wages already earned, based on payroll data, recovered through a payroll deduction, with no recourse against the worker and no credit check. In the normal course, expedited-delivery fees and voluntary tips are not finance charges. The opinion withdrew the CFPB’s 2024 proposal, which would have treated many of these products as credit.</p>
+          <h3>H.R. 9330, the Earned Wage Access Consumer Protection Act</h3>
+          <p>Introduced June 18, 2026 by Rep. Bryan Steil and ordered reported 29–22 by House Financial Services on June 30. Reported Sept. 1 (H. Rept. 119-790) and placed on the Union Calendar; no floor action as of this update.</p>
+          <p>Section 2(b)(2) would bar any state from treating compliant earned wage access as “credit, a loan, debt, or a substantially similar product or service,” or from laws that “prevent or significantly interfere with” it. Section 2(b)(3) preserves state “laws of general applicability,” such as fraud and unfair or deceptive practices laws. The committee report says the savings clause does not preempt state fee limits unless a cap is so onerous that it would “prevent or significantly interfere with” the service.</p>
+          <p>During markup, amendments to cap fees and tips at $10 a month and to preserve state laws that give consumers greater protection each failed 23–28. A broader CFPB bill, H.R. 10184, carries a parallel earned wage access section.</p>
+        </div>
+        <div>
+          <h3>What it would mean for states</h3>
+          <p>The bill would settle the classification question for every state at once. The nine states that treat it as something other than a loan already classify it the same way. Maryland and Connecticut chose the credit approach, which the bill would bar for compliant products; whether their fee caps survive would turn on the “significantly interfere” standard.</p>
+          <p>The committee report says the bill “provides a federal framework” because the CFPB “has answered this question differently” over time and, without a federal standard, “states are left to devise their own frameworks.”</p>
+          <p>On June 30, 2026, 15 attorneys general, including Maryland’s, wrote to the subcommittee urging Congress not to pass the bill, saying it would limit states’ authority to regulate consumer finance. Pennsylvania, Virginia, Ohio, and Georgia did not sign.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="interchange" class="band">
+    <div class="wrap">
+      <h2>Interchange on sales tax and tips</h2>
+      <p class="measure">When a customer pays by card, the merchant’s card costs typically include an interchange fee calculated as a percentage of the full amount, including sales tax and any tip. Several states have considered excluding those portions. It is the same who-pays question as <a href="https://jphoebus.github.io/large-load-tariffs/">large-load tariffs</a>, in a different market.</p>
+      <div class="twocol">
+        <div>
+          <h3>Illinois: from enactment to injunction</h3>
+          <ol class="timeline">
+<li><time datetime="2024-06-07">June 7, 2024</time><p>Illinois enacts the Interchange Fee Prohibition Act (HB 4951, Public Act 103-0592). It bars interchange fees on the tax and tip portions of a card transaction and limits how anyone other than the merchant may use transaction data. Original effective date: July 1, 2025.</p></li>
+<li><time datetime="2024-12-20">Dec. 20, 2024</time><p>Federal district court in Chicago preliminarily enjoins the law as to national banks; extended to out-of-state state banks on Feb. 6, 2025.</p></li>
+<li><time datetime="2025-06-16">June 16, 2025</time><p>Legislature delays the effective date to July 1, 2026 (HB 742, Public Act 104-0004).</p></li>
+<li><time datetime="2026-02-10">Feb. 10, 2026</time><p>District court declines to permanently enjoin the fee limitation, and enjoins the data-usage limitation for federally chartered and certain other institutions.</p></li>
+<li><time datetime="2026-04-29">April 29, 2026</time><p>The OCC issues an interim final rule on national bank fees and an interim final order declaring the Illinois law preempted for national banks and federal savings associations, both effective June 30.</p></li>
+<li><time datetime="2026-05-08">May 8, 2026</time><p>The Seventh Circuit vacates the judgment and remands so the district court can address the OCC’s actions first.</p></li>
+<li><time datetime="2026-06-01">June 1, 2026</time><p>On remand, the court permanently enjoins the fee limitation for national banks, out-of-state state banks, federal savings associations, and card networks. The same day, the legislature passes SB 3645.</p></li>
+<li><time datetime="2026-06-03">June 3, 2026</time><p>Colorado’s governor vetoes SB 26-134, citing the Illinois litigation among his reasons.</p></li>
+<li><time datetime="2026-06-26">June 26, 2026</time><p>Illinois’ governor signs SB 3645 (Public Act 104-0532), moving the effective date to July 1, 2027.</p></li>
+<li><time datetime="2026-09-22">Sept. 22, 2026</time><p>Relying on a June NCUA rule, the court adds federal credit unions to the injunction. Illinois-chartered banks and credit unions are not among the institutions the injunction covers.</p></li>
+          </ol>
+          <p class="note">Sources: <a href="https://lrb.ilga.gov/legislation/ilcs/documents/081501510K150-15.htm" rel="noopener">Illinois Public Act 103-0592 (codified)</a> · <a href="https://ilga.gov/ftp/Public%20Acts/104/104-0004.htm" rel="noopener">Public Act 104-0004</a> · <a href="https://storage.courtlistener.com/recap/gov.uscourts.ilnd.463030/gov.uscourts.ilnd.463030.179.0_1.pdf" rel="noopener">District court opinion, Feb. 10, 2026</a> · <a href="https://www.federalregister.gov/documents/full_text/html/2026/04/29/2026-08341.html" rel="noopener">OCC interim final order</a> · <a href="https://storage.courtlistener.com/recap/gov.uscourts.ilnd.463030/gov.uscourts.ilnd.463030.223.0.pdf" rel="noopener">District court order, June 1, 2026</a> · <a href="https://legiscan.com/IL/text/SB3645/id/3443755/Illinois-2025-SB3645-Enrolled.html" rel="noopener">SB 3645 enrolled text (LegiScan copy)</a> · <a href="https://www.federalregister.gov/documents/2026/06/09/2026-11559/preemption-federal-credit-union-non-interest-charges-and-fees" rel="noopener">NCUA interim final rule</a> · <a href="https://www.consumerfinancemonitor.com/wp-content/uploads/sites/14/2026/09/2529000-2529129-tax-tip-reconsideration1.pdf" rel="noopener">District court order, Sept. 22, 2026 (law-firm copy)</a>. Some court orders are linked from copies hosted by law firms because the court’s own docket blocks automated access.</p>
+        </div>
+        <div>
+          <h3>Colorado: the veto</h3>
+          <p>SB 26-134 would have barred interchange on the sales-tax portion of a transaction, with an exemption for card issuers holding less than $60 billion in assets. It passed the Senate 18–17 on May 1 and the House 44–20 on May 6. Gov. Jared Polis vetoed it on June 3, 2026. His letter raised these points:</p>
+          <ul class="watch">
+            <li><strong>Legal risk.</strong> “It is quite possible this bill would never go into effect,” given the Illinois litigation and federal preemption actions.</li>
+            <li><strong>Limited savings.</strong> At an average combined sales tax of about 8 percent, merchants would save roughly 0.13 percent of a purchase.</li>
+            <li><strong>Feasibility.</strong> It would be “a Colorado-specific carve-out to the national and global integrated payments system.”</li>
+            <li><strong>Small issuers.</strong> Community banks and credit unions told his office they would not be exempt in practice.</li>
+            <li><strong>Use of savings.</strong> He objected to an amendment directing large retailers how to use the savings.</li>
+          </ul>
+          <p class="note">Source: <a href="https://infobytes.orrick.com/wp-content/uploads/SB26-134-VS-1.pdf" rel="noopener">veto letter, June 3, 2026</a> (copy hosted by a law firm; the legislature’s file blocks automated access).</p>
+        </div>
+      </div>
+
+      <h3 style="font-size:1.1rem;margin:32px 0 8px">Other bills in 2026</h3>
+      <p class="measure">Bills found in legislative records. Among the 2026 bills, only Colorado’s reached a governor, and none was enacted.</p>
+      <div class="table-scroll" tabindex="0" aria-label="State interchange bills">
+        <table class="small">
+<thead><tr><th scope="col">State</th><th scope="col">Bill or law</th><th scope="col">Portion covered</th><th scope="col">Status</th><th scope="col">Source</th></tr></thead><tbody>
+<tr><th scope="row">Illinois</th><td>Interchange Fee Prohibition Act (2024)</td><td>Tax and tips</td><td>Enacted 2024; enjoined for national banks, federal credit unions, federal savings associations, out-of-state state banks, and card networks; effective date July 1, 2027</td><td class="sources"><a href="https://lrb.ilga.gov/legislation/ilcs/documents/081501510K150-15.htm" rel="noopener">lrb.ilga.gov</a></td></tr>
+<tr><th scope="row">Colorado</th><td>SB 26-134</td><td>Tax</td><td>Passed Senate 18–17 and House 44–20; vetoed June 3, 2026</td><td class="sources"><a href="https://leg.colorado.gov/bills/sb26-134" rel="noopener">leg.colorado.gov</a></td></tr>
+<tr><th scope="row">New York</th><td>S 5587-A / A 4017-A</td><td>Tax and tips</td><td>Reported from Senate Consumer Protection May 20; committed to Rules June 5, 2026</td><td class="sources"><a href="https://www.nysenate.gov/legislation/bills/2025/S5587/amendment/A" rel="noopener">nysenate.gov</a></td></tr>
+<tr><th scope="row">Delaware</th><td>HB 315</td><td>Tips</td><td>Reported out of House committee March 10, 2026; no later action</td><td class="sources"><a href="https://legis.delaware.gov/BillDetail/142907" rel="noopener">legis.delaware.gov</a></td></tr>
+<tr><th scope="row">Pennsylvania</th><td>HB 2090</td><td>Tax</td><td>Reported from House Finance 14–12 and laid on the table, Feb. 4, 2026</td><td class="sources"><a href="https://legiscan.com/PA/bill/HB2090/2025" rel="noopener">legiscan.com</a></td></tr>
+<tr><th scope="row">Rhode Island</th><td>H 7607, H 8212, S 2344, S 2522</td><td>Tax, or tax and tips</td><td>All held for further study in committee, March 2026</td><td class="sources"><a href="https://webserver.rilegislature.gov/BillText26/HouseText26/H7607.htm" rel="noopener">webserver.rilegislature.gov</a></td></tr>
+<tr><th scope="row">Massachusetts</th><td>S 688</td><td>Tax and tips</td><td>Sent to a study order July 31, 2026</td><td class="sources"><a href="https://malegislature.gov/Bills/194/S688" rel="noopener">malegislature.gov</a></td></tr>
+<tr><th scope="row">Georgia</th><td>SB 512</td><td>Tax</td><td>Referred to Senate Finance Feb. 17, 2026; no further action, as reported</td><td class="sources"><a href="https://legiscan.com/GA/bill/SB512/2025" rel="noopener">legiscan.com</a></td></tr>
+<tr><th scope="row">Washington</th><td>SB 5070</td><td>Tax and tips</td><td>Carried over in committee; no 2026 floor action</td><td class="sources"><a href="https://legiscan.com/WA/bill/SB5070/2025" rel="noopener">legiscan.com</a></td></tr>
+<tr><th scope="row">Alaska</th><td>HB 171</td><td>Tax and tips</td><td>In committee since April 2025; no 2026 action</td><td class="sources"><a href="https://legiscan.com/AK/bill/HB171/2025" rel="noopener">legiscan.com</a></td></tr>
+</tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="analysis">
+    <div class="wrap">
+      <div class="analysis">
+        <div>
+          <h2>What stands out</h2>
+          <h3>Classification comes first</h3>
+          <p>Every state law starts by deciding whether earned wage access is a loan. Most of the nine that say it is not regulate through registration or licensing, disclosure, and a required free option. The credit states regulate through lending licenses and fee caps.</p>
+          <h3>Fee caps are rare; free options are common</h3>
+          <p>Only Maryland, Connecticut, and Indiana cap what consumers pay. Ten of the eleven laws require at least one no-cost way to get funds, Nevada through its license application.</p>
+          <h3>Tips are allowed almost everywhere, with conditions</h3>
+          <p>Most states allow tips if they are disclosed as voluntary, can be zero, and do not affect service. Maryland moved from a zero-default rule to a ban, effective Oct. 1, 2026.</p>
+          <h3>2026 was a year of amendments</h3>
+          <p>No new state enacted an earned wage access law in 2026. Missouri moved from registration to licensing, Maryland banned tips, and Utah revised its registration rules.</p>
+          <h3>On interchange, the courts are setting the pace</h3>
+          <p>Illinois remains the only state with an enacted law, and federal preemption now limits who it reaches. Colorado’s governor cited the case directly, and most other 2026 bills stopped in committee.</p>
+        </div>
+        <div>
+          <h2>What to watch</h2>
+          <ul class="watch">
+            <li>Fall 2026: House floor action on H.R. 9330; any Senate companion.</li>
+            <li>Fall 2026: Whether Illinois appeals the June and September injunctions. The September order refers to the parties having “re-instituted their appeal”; a new appeal is not confirmed.</li>
+            <li>December 31, 2026: Ohio’s 136th General Assembly ends, with SB 117 and HB 152 still in committee.</li>
+            <li>January 2027: New sessions in most states, including whether interchange bills held for study in New York, Rhode Island, Pennsylvania, and elsewhere return.</li>
+            <li>March 1, 2027: First annual earned wage access reports due to Louisiana’s Office of Financial Institutions.</li>
+            <li>July 1, 2027: Illinois’ interchange law takes effect for institutions not covered by the injunction, unless it changes again.</li>
+            <li>December 31, 2029: Nevada’s earned wage access law expires unless extended.</li>
+          </ul>
+          <p class="question">The question I expect to shape the next cycle: whether Congress settles the loan question for every state, or leaves it with states that have already answered it in different ways.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="method" class="band">
+    <div class="wrap"><div class="measure">
+      <h2>How this was compiled</h2>
+      <p><strong>What counts as enacted.</strong> A state is counted when its legislature has passed a statute written specifically for earned wage access. Approaches that rest only on regulation or on an attorney general opinion (Montana’s, for example) are not counted. Connecticut is counted from its 2025 act, which addressed earned wage access directly.</p>
+      <p><strong>Sources.</strong> Each fact is drawn from a statute, enrolled bill, legislative record, regulator page, court order, Federal Register document, congressional report, or governor’s letter. Where an official site blocked automated access, the page links a text copy of the same document (LegiScan, or a law firm’s copy of a court filing or letter) and says so. Where a detail rests on a secondary source, the page says “as reported.” Where a detail could not be confirmed, it says so rather than guessing.</p>
+      <p><strong>As of October 12, 2026.</strong> Both issues are moving. Dates on this page reflect what the sources showed on that date.</p>
+      <p>The underlying data is in <a href="earned-wage-access.csv">earned-wage-access.csv</a> and <a href="interchange-tax-tips.csv">interchange-tax-tips.csv</a>. This comparison is for policy analysis and is not legal or regulatory advice.</p>
+    </div></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap measure">
+    <p>Compiled by Joshua Phoebus, former Director of Performance and Transformation in the Office of Pennsylvania Governor Tom Wolf. <a href="https://www.linkedin.com/in/joshuaphoebus">LinkedIn</a> · <a href="https://www.joshuaphoebusllc.com">Website</a> · <a href="https://jphoebus.github.io/">All projects</a></p>
+    <p>Part of a series on how states make decisions when a new industry outgrows the existing rules. Related: <a href="https://jphoebus.github.io/large-load-screening/">Which data center load counts</a> · <a href="https://jphoebus.github.io/large-load-tariffs/">Who pays for data center power</a> · <a href="https://jphoebus.github.io/data-center-legislation-2026/">What states changed on data centers in 2026</a> · <a href="https://jphoebus.github.io/state-incentive-comparison/">State data center incentives, compared</a> · <a href="https://jphoebus.github.io/data-center-exempt-equipment/">What counts as exempt data center equipment</a> · <a href="https://jphoebus.github.io/tax-incentive-evaluation/">How states check their tax incentives</a> · <a href="https://jphoebus.github.io/spark-grid-tracker/">DOE&#x27;s SPARK grid selections, tracked</a> · <a href="https://jphoebus.github.io/quantum-readiness/">Are state rules ready for quantum computing?</a></p>
+    <p>Federal sources: <a href="https://www.federalregister.gov/documents/2025/12/23/2025-23735/truth-in-lending-regulation-z-non-application-to-earned-wage-access-products">CFPB advisory opinion, Dec. 23, 2025</a> · <a href="https://www.govinfo.gov/content/pkg/BILLS-119hr9330rh/html/BILLS-119hr9330rh.htm">H.R. 9330 as reported</a> · <a href="https://www.govinfo.gov/content/pkg/CRPT-119hrpt790/html/CRPT-119hrpt790.htm">H. Rept. 119-790</a> · <a href="https://cca.hawaii.gov/wp-content/uploads/2026/07/2026.06.30-EWA-Legislation-State-AG-Letter-002.pdf">State attorneys general letter, June 30, 2026</a></p>
+    <p>Last updated October 12, 2026.</p>
+  </div>
+</footer>
+
+<script>
+  // Each button shows or hides the rows with that classification. The table is plain HTML,
+  // so it displays even if this script never runs.
+  document.querySelectorAll("#filters .chip").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var on = b.getAttribute("aria-pressed") === "true";
+      b.setAttribute("aria-pressed", on ? "false" : "true");
+      document.querySelectorAll('#table tr[data-class="' + b.dataset.class + '"]').forEach(function (r) { r.hidden = on; });
+    });
+  });
+</script>
+</body>
+</html>
